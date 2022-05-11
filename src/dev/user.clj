@@ -60,15 +60,11 @@
        "\n  "
        " #?(:cljs (h/" (factory-helper class) " " class-ref ")))\n"))))
 
-; Note that for shadow-cljs compatibility we have to use:
-;; ["semantic-ui-react$Confirm" :as Confirm]
-;; This ClojureScript form is not supported by shadow-cljs:
-;; [semantic-ui-react$Confirm :as Confirm]
 (defn factory-ns-cljs [ns class factory-name docstring]
   (str "(ns " ns "\n"
     "  (:require\n"
     "    [com.fulcrologic.semantic-ui.factory-helpers :as h]\n"
-    "    [\"semantic-ui-react$" class "\" :as " class "]))\n\n"
+    "    [semantic-ui-react$" class " :as " class "]))\n\n"
     "  " (factory-helper-function class factory-name docstring)))
 
 (defn gen-factory-map [out-path]
